@@ -34,18 +34,14 @@ function showBoard(element) {
     let inputOne = document.querySelector('');
 }
 
-function showForm(element) {
+function showForm(element, property) {
     console.log('show form clicked' + element.value);
     let test = element.value;
-    switch(test) {
-        case 0:
-            console.log('0');
-            player_One_Configurator.style.display = 'flex';
-            break;
-        
-        case 1:
-            console.log('2');
-            player_Two_Configurator.style.display = 'flex';4
-            break;
+    if(element.value == 0) {
+        player_One_Configurator.style.display = (property);
+        player_Two_Configurator.style.display = ('none');
+    } else {
+        player_Two_Configurator.style.display = (property);
+        player_One_Configurator.style.display = ('none');
     }
 }
