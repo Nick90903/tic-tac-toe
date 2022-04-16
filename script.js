@@ -10,3 +10,20 @@ for(let i = 0; i < 9; i++) {
     gameboard_Elements.push(temp);
 }
 
+const player = (element, ) => {
+    let score;
+    let playerID = element.value;
+    const getScore = () => score;
+    const setScore = () => score++;
+
+}
+
+const nextTurn = (playerID, playAreaValue) => {
+
+
+
+}
+
+function showBoard(element) {
+    let inputOne = document.querySelector('');
+}

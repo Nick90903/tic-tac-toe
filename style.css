@@ -10,6 +10,7 @@ body {
     padding-left: 30px;
     padding-right: 30px;
     align-items: center;
+    height: 60px;
 }
 
 .board-Background {
@@ -28,5 +29,20 @@ body {
 .play-Area {
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: rgb(124, 122, 122);
+}
+
+.input-One {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 50vw;
+    top: calc(160px + calc(clamp(345px, 40vw, 638px) / 2));
+    background-color: rgb(111, 113, 138);
+    height: 130px;
+}
+
+label {
+    color: white;
 }
