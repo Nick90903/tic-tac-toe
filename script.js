@@ -1,24 +1,27 @@
-let gameboard_Values = [];
 let gameboard_Elements = [];
 let gameboard_Background = document.querySelector('.board-Background');
 let current_Player = true;
 
-
-for(let i = 0; i < 9; i++) {
-    let temp = document.createElement('div');
-    temp.value = i;
-    temp.classList.add('play-Area');
-    temp.textContent = ('');
-    temp.addEventListener('click', function() {
-        playTurn.turnPlayed(this);
-    })
-    gameboard_Background.appendChild(temp);
-    gameboard_Elements.push(temp);
-    console.table(gameboard_Elements);
+function drawBoard () {
+    let toRemove = document.querySelectorAll('.play-Area');
+    gameboard_Elements = [];
+    toRemove.forEach(element => {element.remove()});
+    for(let i = 0; i < 9; i++) {
+        let temp = document.createElement('div');
+        temp.value = i;
+        temp.classList.add('play-Area');
+        temp.textContent = ('');
+        temp.addEventListener('click', function() {
+            playTurn.turnPlayed(this);
+        })
+        gameboard_Background.appendChild(temp);
+        gameboard_Elements.push(temp);
+        console.table(gameboard_Elements);
+    }
 }
 
 const player = (element) => {
-    let score;
+    let score = 0;
     let playerID = element;
     const getScore = () => score;
     const setScore = () => score++;
@@ -106,11 +109,20 @@ const playTurn = (() => {
         let player1_Score = document.querySelector('.primary-Score');
         let player2_Score = document.querySelector('.second-Score');
 
+
+
         if(winner == 'X') {
-            Player1.setScore();
-            current_Player_text.textContent = ('X Wins!')
-            player1_Score.textContent = (player1.getscore());
+            console.log('X Wins');
+            player1.setScore();
+            current_Player_text.textContent = ('X Wins!');
+            player1_Score.textContent = (player1.getScore());
+        } else {
+            console.log('O Wins');
+            player2.setScore();
+            current_Player_text.textContent = ('O Wins!');
+            player2_Score.textContent = (player2.getScore());
         }
+        drawBoard();
     }
 
     return {updateCurrentPlayer, turnPlayed};
@@ -119,4 +131,5 @@ const playTurn = (() => {
 let player1 = player(1);
 let player2 = player(2);
 
+drawBoard();
 swapPlayer();
