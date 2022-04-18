@@ -1,6 +1,7 @@
 let gameboard_Values = [];
 let gameboard_Elements = [];
 let gameboard_Background = document.querySelector('.board-Background');
+let current_Player = true;
 
 /*
 let player_One_Configurator = document.querySelector('.input-One');
@@ -15,8 +16,12 @@ for(let i = 0; i < 9; i++) {
     let temp = document.createElement('div');
     temp.value = i;
     temp.classList.add('play-Area');
+    temp.addEventListener('click', function() {
+        playTurn.turnPlayed(this);
+    })
     gameboard_Background.appendChild(temp);
     gameboard_Elements.push(temp);
+    console.table(gameboard_Elements);
 }
 
 
@@ -29,7 +34,7 @@ const player = (element, ) => {
 
 
 function swapPlayer () {
-    let current_Player = false;
+
     let current_Player_text = document.querySelector('.next');
 
     current_Player = !current_Player;
@@ -39,10 +44,10 @@ function swapPlayer () {
     } else {
         current_Player_text.textContent = ('--> :Y');
     }
-    nextTurn.updateCurrentPlayer(current_Player);
+    playTurn.updateCurrentPlayer(current_Player);
 }
 
-const nextTurn = (() => {
+const playTurn = (() => {
     let activePlayer;
 
     const updateCurrentPlayer = (current) => {
@@ -50,7 +55,18 @@ const nextTurn = (() => {
         console.log('Update Current Player' + activePlayer);
     }
 
-    return {updateCurrentPlayer};
+    const turnPlayed = (element) => {
+        console.log(`${element.value} Clicked`);
+        activePlayer ? element.textContent = ('X') : element.textContent = ('O');
+        swapPlayer();
+        checkVictory();
+    }
+
+    const checkVictory = () => {
+        
+    }
+
+    return {updateCurrentPlayer, turnPlayed};
 })();
 
 function showBoard(element) {
