@@ -63,7 +63,30 @@ const playTurn = (() => {
     }
 
     const checkVictory = () => {
-        
+        // Check col
+        for(let i = 0; i <= 2; i++) {
+            if(gameboard_Elements[i].textContent == gameboard_Elements[3 + i].textContent && gameboard_Elements[i + 6].textContent) {
+                console.log(`${gameboard_Elements[i].textContent} Wins Col`);
+            }
+        }
+
+        // Check row
+        for(let i = 0; i <= 2; i++) {
+            console.log(3 + (i * 3));
+            if(gameboard_Elements[0 + (i * 3)].textContent == gameboard_Elements[1 + (i * 3)].textContent && gameboard_Elements[2 + (i * 3)].textContent) {
+                console.log(`${gameboard_Elements[i * 3].textContent} Wins Row`);
+            }
+        }
+
+        //check \
+        if(gameboard_Elements[0].textContent == gameboard_Elements[4].textContent && gameboard_Elements[8].textContent) {
+            console.log(`${gameboard_Elements[0].textContent} Wins `);
+        }
+
+        //check /
+        if(gameboard_Elements[2].textContent == gameboard_Elements[4].textContent && gameboard_Elements[6].textContent) {
+            console.log(`${gameboard_Elements[2].textContent} Wins /`);
+        }
     }
 
     return {updateCurrentPlayer, turnPlayed};
@@ -72,6 +95,8 @@ const playTurn = (() => {
 function showBoard(element) {
     let inputOne = document.querySelector('');
 }
+
+swapPlayer();
 
 
 /*
