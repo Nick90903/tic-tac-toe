@@ -25,8 +25,13 @@ const player = (element) => {
     let playerID = element;
     const getScore = () => score;
     const setScore = () => score++;
+    const setName = (input) => {
+        let playerNameElement = document.querySelector('.player' + playerID);
+        console.log(playerNameElement);
+        playerNameElement.textContent = (input + ': ');
+    }
 
-    return {setScore, getScore};
+    return {setScore, getScore, setName};
 }
 
 function swapPlayer () {
@@ -122,14 +127,16 @@ const playTurn = (() => {
             current_Player_text.textContent = ('O Wins!');
             player2_Score.textContent = (player2.getScore());
         }
-        drawBoard();
     }
 
     return {updateCurrentPlayer, turnPlayed};
 })();
 
+function name1 () {
+    player1.setName(prompt("What's Your Name?", 'John Doe'));
+}
+
 let player1 = player(1);
 let player2 = player(2);
 
-drawBoard();
 swapPlayer();

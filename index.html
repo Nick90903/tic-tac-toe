@@ -10,9 +10,21 @@
 <body>
 
     <div class="header">
-        <h3 class="player">Player: <a class="primary-Score">X</a></h3>
+        <div class="name-Container">
+            <h3 class="player1" onclick="name1()">Player:</h3> 
+            <h3 class="primary-Score">0</h3>
+        </div>
+       
         <h3 class="next"></h3>
-        <h3 class="opponent">Opponent: <a class="second-Score">X</a></h3>
+        <div class="name-Container">
+            <h3 class="player2">Opponent: </h3>
+            <h3 class="second-Score">0</h3>
+        </div>
+
+    </div>
+
+    <div class="start-Container">
+        <button class="start-Button" onclick="drawBoard()">Start</button>
     </div>
 
     <div class="board-Background">
